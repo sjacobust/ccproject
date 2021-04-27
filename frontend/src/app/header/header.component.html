@@ -1,0 +1,43 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Fake News Attacker</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="home">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="saved-news">Tus Noticias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="verify-news" tabindex="-1" aria-disabled="true">Verificador de Noticias</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Perfil
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngIf="notLoggedIn else loggedIn">
+                <a class="dropdown-item" href="login">Iniciar Sesion</a>
+                <a class="dropdown-item" href="signin">Regístrate</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+</header>
+
+
+<ng-template #loggedIn>
+    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item" href="profile">Perfil</a>
+        <a class="dropdown-item" href="logout">Cerrar Sesión</a>
+      </div>
+</ng-template>
