@@ -1,0 +1,45 @@
+<div class="grid" *ngIf="notLoggedIn else loggedIn">
+    <div class="grid-row">
+        <div class="col-s-12"><h1>No hay noticias guardadas</h1></div>
+    </div>
+    <div class="grid-row">
+        <div class="col-s-12">
+            <h3>Parece que no has iniciado sesión o no estás registrado</h3>
+        </div>
+    </div>
+    <div class="grid-row">
+        <div class="col-s-12"><p><a href="/login">Inicia Sesión</a> o <a href="/signin">Regístrate</a></p></div>
+    </div>
+</div>
+
+<ng-template #loggedIn>
+    <div class="grid" *ngIf="savedNews==[] else NoNews">
+        <div class="grid-row">
+            <div class="col-s-12">
+                <h1>Noticias Guardadas</h1>
+            </div>
+        </div>
+        <div class="grid-row">
+            <ul class="col-s-12">
+                <li *ngFor="let news of savedNews">
+                    <div class="col-s-12">
+                        <img src="{{news.image}}" alt="Image">
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #NoNews>
+    <div class="grid">
+        <div class="grid-row">
+            <div class="col-s-12"><h1>No hay noticias guardadas</h1></div>
+        </div>
+        <div class="grid-row">
+            <div class="col-s-12">
+                <p>Empieza a guardar tus noticias! <a href="home">Descubre las más populares</a></p>
+            </div>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,43 @@
+<div class="grid">
+    <div class="grid-row">
+        <div class="col-s-12">
+            <h1>Noticias Populares</h1>
+        </div>
+    </div>
+    <div class="grid-row"  *ngFor="let news of popularNews">
+        <div class="col-s-12">
+            <div class="grid">
+                <div class="grid-row">
+                    <div class="col-s-12">
+                        <h4>{{news.title}}</h4>
+                    </div>
+                </div>
+                <div class="grid-row">
+                    <img src="{{news.urlToImage}}" alt="{{news.urlToImage}}" class="col-s-4" *ngIf="news.urlToImage != null else noImage">
+                    <div class="col-s-4">
+                        <p>{{news.description}}</p>
+                    </div>
+                    <div class="col-s-4">
+                        <div class="grid">
+                            <div class="grid-row">
+                                <div class="col-s-12">
+                                    <p>Publicado: {{news.publishedAt}}</p>
+                                </div>
+                            </div>
+                            <div class="grid-row">
+                                <div class="col-s-12">
+                                    <a href="{{news.url}}">Leer más aquí</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<ng-template #noImage>
+    <img src="https://www.andromo.com/blog/wp-content/uploads/2020/12/news-1.jpg" alt="No image to show" class="col-s-4">
+
+</ng-template>
