@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SavedNewsComponent implements OnInit {
 
+  notLoggedIn:boolean = true;
+  savedNews:any = [];
+  
   constructor() { }
 
   ngOnInit(): void {

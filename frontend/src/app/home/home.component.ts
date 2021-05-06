@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsService } from '../news.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +8,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  popularNews: any = {
+    title: "",
+    author: "",
+    content: "",
+    description: "",
+    date: "",
+    url: "",
+    img: ""
+  };
+
+  constructor(private newsService: NewsService) {
+    this.newsService.getPopularNews().then((result: any) => {
+      console.log(result.articles);
+      this.popularNews = result.articles;
+    }).catch(error => {
+      console.log(error);
+    });
+   }
 
   ngOnInit(): void {
+    
   }
+
+
 
 }
