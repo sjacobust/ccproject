@@ -1,26 +1,10 @@
-<div class="grid">
+<div class="grid" *ngIf="theresQuery else noSearch">
   <div class="grid-row">
     <div class="col-s-12">
-      <h1>Noticias Populares</h1>
+      <h1>Búsqueda</h1>
     </div>
   </div>
-  <form>
-  <div class="grid-row">
-      <div class="col-s-2">
-        <p>País</p>
-      </div>
-      <div class="col-s-5">
-        <select name="country" id="country" #country>
-          <option value="us">Estados Unidos</option>
-          <option value="mx">México</option>
-        </select>
-      </div>
-      <div class="col-s-4">
-        <button class="btn btn-primary" (click)="changeCountry(country.value)">Cambiar Ubicación</button>
-      </div>
-  </div>
-</form>
-  <div class="grid-row" *ngFor="let news of popularNews">
+  <div class="grid-row" *ngFor="let news of searchedNews">
     <div class="col-s-12">
       <div class="grid">
         <div class="grid-row">
@@ -56,5 +40,21 @@
 
 <ng-template #noImage>
   <img src="https://www.andromo.com/blog/wp-content/uploads/2020/12/news-1.jpg" alt="No image to show" class="col-s-4">
+
+</ng-template>
+
+<ng-template #noSearch>
+  <div class="grid">
+      <div class="grid-row">
+          <div class="col-s-12">
+              <h1>Búsqueda</h1>
+          </div>
+      </div>
+      <div class="grid-row">
+          <div class="col-s-12">
+              <h3>Empieza a buscar ahora!</h3>
+          </div>
+      </div>
+  </div>
 
 </ng-template>

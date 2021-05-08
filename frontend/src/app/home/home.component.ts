@@ -19,18 +19,29 @@ export class HomeComponent implements OnInit {
   };
 
   constructor(private newsService: NewsService) {
-    this.newsService.getPopularNews().then((result: any) => {
+  }
+
+  ngOnInit(): void {
+    this.newsService.getPopularNews('us').then((result: any) => {
       console.log(result.articles);
       this.popularNews = result.articles;
     }).catch(error => {
       console.log(error);
     });
-   }
-
-  ngOnInit(): void {
-    
   }
 
+  changeCountry(country: any) {
+    this.newsService.getPopularNews(country).then((result: any) => {
+      console.log(result.articles);
+      this.popularNews = result.articles;
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 
-
+  search(data:any) {
+    this.newsService.searchNews(data).then(result => {
+      this.popularNews = result.articles;
+    })
+  }
 }

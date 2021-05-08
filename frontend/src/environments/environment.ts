@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   apiUrl: "https://w91rccrzd5.execute-api.us-east-1.amazonaws.com/dev",
+  verifyNewsUrl: "https://177afc83.us-south.apigw.appdomain.cloud/nluapi/nluproject",
   newsApiKey: "befa2c5d0c474bce9b5a6ae237d73e0f"
 };
 
