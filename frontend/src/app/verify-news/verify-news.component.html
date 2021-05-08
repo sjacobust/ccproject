@@ -19,40 +19,67 @@
             <div class="grid-row">
                 <div class="col-s-12">
                     <div class="col-s-12">
-                        <p>Lo único que tienes que hacer es ingresar las palabras claves o el título de la noticia y nosotros haremos el resto. El algoritmo buscará noticias de las fuentes más fidedignas y te dará otros artículos con el mismo contenido.</p>
+                        <p>Lo único que tienes que hacer es ingresar las palabras claves o el artículo y nosotros haremos el resto. El algoritmo buscará noticias de las fuentes más fidedignas y te dará otros artículos con el mismo contenido.</p>
                     </div>
                 </div>
             </div>
         </div>
         <img src="https://unamglobal.unam.mx/wp-content/uploads/2018/06/fakenews-990x556.jpg" alt="Qué son las Fake News? | UNAM Global" class="col-s-6">
     </div>
-    <div class="grid-row">
-        
-    </div>
-    <div class="grid-row">
-        <div class="col-s-6 grid">
-            <div class="grid-row">
-                <div class="col-s-12">
-                    <h4>Escribe el título de la noticia aquí</h4>
+    <form (submit)="submitArticle()">
+        <div class="grid-row">
+            <div class="col-s-6 grid">
+                <div class="grid-row">
+                    <div class="col-s-12">
+                        <h4>Escribe tu artículo aquí</h4>
+                    </div>
+                </div>
+                <div class="grid-row">
+                    <div class="col-s-12">
+                        <textarea name="articleToVerify" id="articleToVerify" cols="30" rows="10" [(ngModel)]="article"></textarea>
+                    </div>
                 </div>
             </div>
-            <div class="grid-row">
-                <div class="col-s-12">
-                    <textarea name="articleToVerify" id="articleToVerify" cols="30" rows="10"></textarea>
+            <div class="col-s-6 grid">
+                <div class="grid-row">
+                    <div class="col-s-12">
+                        <h4>Aquí se mostrarán los otros artículos (si se encuentran)</h4>
+                    </div>
+                </div>
+                <div class="grid-row" *ngIf="!noArticles else zeroArticles">
+                    <div class="col-s-12">
+                        <div class="grid">
+                            <div class="grid-row" *ngFor="let article of articlesFound">
+                                <div class="col-s-6">
+                                    <p>{{article.title}}</p>
+                                </div>
+                                <div class="col-s-6">
+                                    <a style="font-size: small;" href="{{article.url}}"><b>{{article.source.name}}</b></a>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-s-6 grid">
-            <div class="grid-row">
-                <div class="col-s-12">
-                    <h4>Aquí se mostrarán los otros artículos (si se encuentran)</h4>
-                </div>
-            </div>
-            <div class="grid-row">
-                <div class="col-s-12">
-                    <textarea name="otherArticles" id="otherArticles" cols="30" rows="10"></textarea>
-                </div>
+        <div class="grid-row">
+            <div class="col-s-12">
+                <button class="btn btn-success">Analizar Noticia</button>
             </div>
         </div>
-    </div>
+    </form>
 </div>
+
+
+<ng-template #zeroArticles>
+    <div class="col-s-12" >
+        <div class="grid">
+            <div class="grid-row">
+                <div class="col-s-12">
+                    <p><b>Empieza a verificar ya!</b></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>
